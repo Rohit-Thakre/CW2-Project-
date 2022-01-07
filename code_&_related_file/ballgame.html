@@ -1,0 +1,310 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fall game</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong">
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #game {
+            width: 50%;
+            height: 500px;
+            border: 1px solid black;
+            margin-left: 350px;
+            margin-top: 150px;
+            position: fixed;
+            overflow: hidden;
+            /* border: 2px red solid; */
+            /* background-image: url(ballbg.jpg); */
+        }
+
+        #character {
+            width: 30px;
+            height: 30px;
+            background-color: rgb(255, 187, 0);
+            border: 5px solid white;
+            box-shadow: 0 0 10px rgb(22, 255, 22), 0 0 20px rgb(22, 255, 22), 0 0 20px rgb(22, 255, 22);
+
+            border-radius: 50%;
+            position: relative;
+            top: 450px;
+            left: 190px;
+            z-index: 1000000;
+        }
+
+        .block {
+            width: 95.5%;
+            height: 20px;
+            /* background-color: black; */
+            border: 5px solid blue;
+            padding: 0;
+            box-shadow: 0 1.2px 15px red;
+            /*, 0 1.2px 15px red, 0 1.2px 15px red, 0 1.2px 15px red; */
+            position: relative;
+            top: 100px;
+            margin-top: -30px;
+            padding: 10px;
+        }
+
+        .hole {
+            width: 40px;
+            height: 50px;
+            background-color: black;
+            border: 2px solid red;
+            border-top: none;
+            border-bottom: none;
+            border-left: 5px solid blue;
+            border-right: 5px solid blue;
+            position: relative;
+            top: 100px;
+            margin-top: -50px;
+        }
+
+        body {
+            /* height: 200px; */
+            background-color: black;
+            /* background-image: linear-gradient(rgba(247, 2, 2, 0.87), rgb(255, 255, 255), rgb(0, 255, 0)); */
+            /* background-image: url("C:\Users\Rohit\Downloads\bg.jpg"); */
+
+            /* background-image: url(bg.png); */
+            font-family: "Audiowide", sans-serif;
+            color: rgb(6, 231, 6);
+        }
+
+        h3 {
+            padding: 10px;
+            color: rgb(16, 235, 16);
+            border: 2px solid red;
+            position: absolute;
+            width: 300px;
+            height: 50px;
+            box-shadow: 5px 10px 10px rgb(16, 235, 16);
+            font-size: 50px;
+            text-align: center;
+            margin-left: 550px;
+            margin-top: 10px;
+            border-radius: 20px;
+            /* text-shadow: 5px 5px 10px rgb(16, 235, 16); */
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        #time {
+            color: rgb(15, 233, 15);
+            /* border: 2px solid red; */
+            position: absolute;
+            margin-left: 350px;
+            margin-top: 100px;
+            font-size: 30px;
+            /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+            /* border-radius: 20px; */
+            padding: 10px;
+            text-shadow: 2px 2px 10px rgb(16, 235, 16);
+            text-decoration: underline;
+
+        }
+
+        #score {
+            /* border-radius: 20px; */
+            /* height: 50px;
+            width: 100px; */
+            color: rgb(16, 235, 16);
+            /* border-bottom: 5px yellow; */
+            /* border: 2px solid red; */
+            position: absolute;
+            margin-left: 900px;
+            margin-top: 110px;
+            font-size: 30px;
+            text-align: left;
+            /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+            text-shadow: 2px 2px 10px rgb(16, 235, 16);
+            text-decoration: underline;
+        }
+
+        #left {
+            position: absolute;
+            margin-top: 300px;
+            margin-left: 80px;
+            font-size: 150px;
+        }
+
+        #right {
+            position: absolute;
+            margin-top: 300px;
+            margin-left: 1200px;
+            font-size: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <marquee behavior="scroll" direction="up" scrollamount="1">Falling Ball</marquee>
+    <marquee behavior="scroll" direction="right" scrollamount="12">Lets you Play Better.</marquee>
+    <marquee behavior="scroll" direction="left" scrollamount="20">Never let good enough BE enough!</marquee>
+    <marquee behavior="scroll" direction="right" scrollamount="50">Adding Fun to your Life.</marquee> -->
+    <h3>Fall Ball</h3>
+    <p id="time">00:00:00</p>
+    <p id="score">Score: 00</p>
+    <div id="game">
+        <div id="character"></div>
+    </div>
+    <h1 id="left">
+        < </h1>
+            <h1 id="right"> > </h1>
+
+</body>
+<script>
+
+    var character = document.getElementById("character");
+    var game = document.getElementById("game");
+    var interval;
+    var both = 0;
+    var counter = 0;
+    var currentBlocks = [];
+
+
+    function moveLeft() {
+        var left = parseInt(window.getComputedStyle(character).getPropertyValue("left"));
+        if (left > 0) {
+            character.style.left = left - 2 + "px";
+            leftside = document.getElementById("left");
+            // leftside.style.fontShadow = "2px 2px 10px red";
+            leftside.style.color = " red";
+        }
+    }
+    function moveRight() {
+        var left = parseInt(window.getComputedStyle(character).getPropertyValue("left"));
+        if (left < 380) {
+            character.style.left = left + 2 + "px";
+
+            rightside = document.getElementById("right");
+            rightside.style.textShadow = "2px 2px 10px red";
+            rightside.style.color = "red";
+        }
+    }
+    document.addEventListener("keydown", event => {
+        if (both == 0) {
+            both++;
+            if (event.key === "ArrowLeft") {
+                interval = setInterval(moveLeft, 1);
+            }
+            if (event.key === "ArrowRight") {
+                interval = setInterval(moveRight, 1);
+            }
+        }
+    });
+    document.addEventListener("keyup", event => {
+        clearInterval(interval);
+
+        leftside = document.getElementById("left");
+        rightside = document.getElementById("right");
+        leftside.style.textShadow = "2px 2px 10px red";
+        rightside.style.textShadow = "2px 2px 10px red";
+        leftside.style.color = " rgb(16, 235, 16)";
+        rightside.style.color = "rgb(16, 235, 16)";
+        both = 0;
+    });
+
+    var blocks = setInterval(function () {
+        var blockLast = document.getElementById("block" + (counter - 1));
+        var holeLast = document.getElementById("hole" + (counter - 1));
+        if (counter > 0) {
+            var blockLastTop = parseInt(window.getComputedStyle(blockLast).getPropertyValue("top"));
+            var holeLastTop = parseInt(window.getComputedStyle(holeLast).getPropertyValue("top"));
+        }
+        if (blockLastTop < 400 || counter == 0) {
+            var block = document.createElement("div");
+            var hole = document.createElement("div");
+            block.setAttribute("class", "block");
+            hole.setAttribute("class", "hole");
+            block.setAttribute("id", "block" + counter);
+            hole.setAttribute("id", "hole" + counter);
+            block.style.top = blockLastTop + 100 + "px";
+            hole.style.top = holeLastTop + 100 + "px";
+            var random = Math.floor(Math.random() * 360);
+            hole.style.left = random + "px";
+            game.appendChild(block);
+            game.appendChild(hole);
+            currentBlocks.push(counter);
+            counter++;
+
+            document.getElementById("score").innerHTML = "Score :" + counter;
+        }
+        var characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
+        var characterLeft = parseInt(window.getComputedStyle(character).getPropertyValue("left"));
+        var drop = 0;
+        if (characterTop <= 0) {
+            console.log(counter);
+
+            alert("Game over. Score: " + (counter));
+            // ye wala code disolay karna hai 
+            clearInterval(blocks);
+            location.reload();
+        }
+        for (var i = 0; i < currentBlocks.length; i++) {
+            let current = currentBlocks[i];
+            let iblock = document.getElementById("block" + current);
+            let ihole = document.getElementById("hole" + current);
+            let iblockTop = parseFloat(window.getComputedStyle(iblock).getPropertyValue("top"));
+            let iholeLeft = parseFloat(window.getComputedStyle(ihole).getPropertyValue("left"));
+            iblock.style.top = iblockTop - 0.5 + "px";
+            ihole.style.top = iblockTop - 0.5 + "px";
+            if (iblockTop < -20) {
+                currentBlocks.shift();
+                iblock.remove();
+                ihole.remove();
+            }
+            if (iblockTop - 20 < characterTop && iblockTop > characterTop) {
+                drop++;
+                if (iholeLeft <= characterLeft && iholeLeft + 20 >= characterLeft) {
+                    drop = 0;
+                }
+            }
+        }
+        if (drop == 0) {
+            if (characterTop < 480) {
+                character.style.top = characterTop + 2 + "px";
+            }
+        } else {
+            character.style.top = characterTop - 0.5 + "px";
+        }
+    }, 1);
+
+
+    // time code
+    sec = "00";
+    min = "00";
+    hr = "00";
+
+    function timer() {
+        time = document.getElementById("time");
+        sec++;
+        if (sec < 10) {
+            sec = "0" + sec;
+        }
+        if (sec == 60) {
+            sec = 00;
+            min++;
+            if (min < 10) {
+                min = "0" + min;
+            }
+            if (min == 60) {
+                min = 00;
+                hr++;
+                if (hr < 10) {
+                    hr = "0" + hr;
+                }
+            }
+        }
+        time.innerHTML = hr + ":" + min + ":" + sec;
+    }
+    // to call the function after every second 
+    setInterval(timer, 1000)
+
+</script>
+
+</html>

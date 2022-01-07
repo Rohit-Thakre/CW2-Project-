@@ -1,0 +1,250 @@
+<!-- title ka icon badlna hai bg me music lagana g video tutorial, gif add karna hai congo ke liye
+    icons bhi lagana h 
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>find_num</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        body {
+            background-color: rgba(128, 128, 128, 0.644);
+            box-sizing: border-box;
+            background-image: url(numbg.jpg);
+            background-repeat: no-repeat;
+            background-position: 0px -120px;
+            height: 800px;
+            box-sizing: border-box;
+        }
+
+
+        .box input[type="text"] {
+            display: block;
+            margin-top: 30px;
+            margin-bottom: 5px;
+            margin-left: 130px;
+            padding: 12px;
+            font-size: 50px;
+            text-decoration: underline;
+            width: 90px;
+            background-color: rgba(0, 0, 0, 0.1);
+            color: white;
+            border-radius: 10px;
+            border: 2px solid rgb(0, 255, 0)
+                /* margin: 30px; */
+
+        }
+
+        .box button {
+            position: relative;
+            margin-top: 30px;
+            text-align: center;
+            width: 200px;
+            height: 40px;
+            padding: 5px;
+            color: white;
+            border-radius: 10px;
+            background-color: rgb(14, 240, 14);
+            font-size: 30px;
+        }
+
+        button:hover {
+            color: white;
+            background-color: yellow;
+        }
+
+        .screen {
+            border: 2px solid red;
+            height: 200px;
+            text-align: center;
+            vertical-align: 100px;
+            background-image: url("screen.jpg");
+            background-repeat: no-repeat;
+            border-radius: 10px;
+            background-repeat: no-repeat;
+            /* box-shadow: 2px 5px 10px red; */
+            /* animation: screen; */
+            /* animation-duration: 2s; */
+            /* animation-iteration-count: infinite; */
+
+        }
+
+        /* 
+        @keyframes screen {
+            0% {
+                border: 10px solid green;
+                box-shadow: 0, 5px 0px 5px red, 0, 0;
+            }
+
+            25% {
+                box-shadow: 0, 0, 5px 5px 10px red, 0;
+            }
+
+            50% {
+                box-shadow: 0, 0, 0, 5px 5px 10px red, 0;
+            }
+
+            75% {
+                box-shadow: 0, 0, 0, 5px 5px 10px red;
+            }
+
+            100% {
+                box-shadow: 5px 5px 10px red, 0, 0, 0;
+            }
+
+        } */
+        */ .screen h1 {
+            position: relative;
+            top: 50px;
+        }
+
+        .box {
+            border: 5px solid blue;
+            border-radius: 20px;
+            width: 400px;
+            height: 525px;
+            padding: 20px;
+            text-align: center;
+            margin: auto;
+            margin-top: 50px;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        #txtbx {
+            display: relative;
+            margin-top: 30px;
+            margin-bottom: 0;
+            color: rgb(0, 255, 0);
+            font-size: 200%;
+
+        }
+
+        #hint {
+            color: red;
+            font-size: 50px;
+            font-family: Comic Sans MS;
+        }
+
+        #win1 {
+            /* border: 2px solid red; */
+            position: absolute;
+            margin-left: 120px;
+            margin-top: 200px;
+            height: 500px;
+            width: 300px;
+            /* background-image: url("win.gif"); */
+            background-repeat: no-repeat;
+
+
+        }
+
+        #win2 {
+            /* border: 2px solid red; */
+            position: absolute;
+            margin-left: 1000px;
+            margin-top: 200px;
+            height: 500px;
+            width: 300px;
+            /* background-image: url("win.gif"); */
+            background-repeat: no-repeat;
+
+        }
+    </style>
+</head>
+
+<body id="display">
+    <p id="win1"> </p>
+    <p id="win2"> </p>
+
+    <div class="box">
+
+        <div class="screen">
+            <h1 id="hint"></h1>
+        </div>
+
+        <h2 id="txtbx">Enter your number here </h2>
+        <i class="fas fa-arrow-circle-down"></i>
+        <input type="text" name="number" placeholder="No.">
+        <button onclick="n1()">Check</button>
+        <!-- <p id="ans">Error </p> -->
+
+
+    </div>
+    <script>
+        // alert("okay");
+
+
+        var x = Math.floor((Math.random() * 50) + 1);
+        // console.log(x);
+        // document.getElementById("ans").innerHTML = x;
+
+        win1 = document.getElementById("win1");
+        win2 = document.getElementById("win2");
+
+
+        function n1() {
+            //alert("working")
+
+            box_number = document.getElementsByName("number")[0].value;
+            //code 
+            if (x == box_number) {
+                // alert("same h");
+                document.getElementById("hint").innerHTML = "congrats," + "<br>" + "you got it !";
+                // alert("congrats you won the game. refresh the page to play again!");
+
+                // document.getElementsByClassName("win").style.visibility = "none";
+
+
+                win1.style.backgroundImage = "url(win.gif)";
+                win2.style.backgroundImage = "url(win.gif)";
+
+                // document.getElementById("display").style.backgroundImage = "linear-gradient(45deg,red 50%, yellow 50%)";
+
+
+            }
+
+            if (x < box_number) {
+                // alert("bada h ");
+                document.getElementById("hint").innerHTML = "greater number!";
+                win1.style.backgroundImage = "url(woman.png)";
+                win2.style.backgroundImage = "url(woman.png)";
+
+            }
+
+            if (x > box_number) {
+                // alert("chota  h");
+                document.getElementById("hint").innerHTML = "small number!" + "<br>" + "try ones more";
+                win1.style.backgroundImage = "url(man.png)";
+                win2.style.backgroundImage = "url(man.png)";
+
+            }
+
+            if (50 < box_number) {
+                // alert(coverage se bahar);
+                document.getElementById("hint").innerHTML = "out of range!";
+                win1.style.backgroundImage = "url(smile.png)";
+                win2.style.backgroundImage = "url(smile.png)";
+
+
+            }
+
+        }//function
+
+
+
+
+    </script>
+</body>
+
+</html>

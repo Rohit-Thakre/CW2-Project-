@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getTheDrop</title>
+    <link rel="icon" href="ninja.png" type="image/png">
+
+    <style>
+        body {
+            background: gray;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            max-width: 550px;
+            max-height: 550px;
+        }
+
+        #box {
+            height: 500px;
+            width: 500px;
+            border: 5px solid red;
+            margin: 0;
+            background-image: linear-gradient(to top, gray, teal);
+        }
+
+        #drop {
+            height: 50px;
+            width: 50px;
+            /* background-color: red; */
+            margin: 0;
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        #ninja {
+            height: 60px;
+            width: 50px;
+            /* background-color: rgba(249, 253, 25, 0.897); */
+            border-radius: 50%;
+            position: absolute;
+            margin-top: 50px;
+        }
+
+        #score {
+            position: absolute;
+            margin-top: 10px;
+            margin-left: 430px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            text-decoration: underline;
+        }
+
+        #btn {
+            position: absolute;
+            text-align: center;
+            margin-top: 510px;
+            width: 500px;
+            padding: 20px;
+            background-color: rgb(28, 245, 28);
+            border-radius: 40px;
+            /* border: none; */
+        }
+
+        #scoreShow {
+            position: absolute;
+            margin-top: 580px;
+            text-align: center;
+            font-size: 30px;
+            width: 470px;
+            border: 5px solid yellow;
+            padding: 10px;
+            border-radius: 40px;
+        }
+
+        timer_div {
+            position: absolute;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="box">
+            <div id="ninja"> <img src="ninja.png" alt="" height="70px" width="60px"></div>
+            <div id="drop"> <img src="drop.png" alt="" height="55px" width="55px"></div>
+            <p id="score">score :0 </p>
+            <button id="btn" onclick="showTimer()">START TIMER !</button>
+            <h3 id="scoreShow">Youre Score Is: 00 </h3>
+            <div id="timer_div"></div>
+        </div>
+    </div>
+    <script>
+        let ninja = document.getElementById("ninja");
+        drop = document.getElementById("drop");
+        let ninjatop = 0;
+        let ninjaleft = 0;
+        let score_count = 00;//score counter
+
+
+        let droptop = Math.floor((Math.random() * 400) + 1);
+        let dropleft = Math.floor((Math.random() * 400) + 1);
+        // console.log("drop top" + droptop);
+        // console.log("drop left" + dropleft);
+        drop.style.marginLeft = dropleft + "px";
+        drop.style.marginTop = droptop + "px";
+
+        document.onkeydown = function (event) {
+            // console.log(event.keyCode);
+            if (event.keyCode == 40) {
+                //down
+                ninjatop += 10;
+                ninja.style.marginTop = ninjatop + "px";
+                if (ninjatop >= 450) {
+                    alert("out of window");
+                }
+            }
+            if (event.keyCode == 39) {
+                //right
+                ninjaleft += 10;
+                ninja.style.marginLeft = ninjaleft + "px";
+                if (ninjaleft >= 470) {
+                    alert("out of window");
+                }
+            }
+            if (event.keyCode == 38) {
+                //up 
+                ninjatop -= 10;
+                ninja.style.marginTop = ninjatop + "px";
+                if (ninjatop < 0) {
+                    alert("out of window");
+                }
+            }
+            if (event.keyCode == 37) {
+                //left
+                ninjaleft -= 10;
+                ninja.style.marginLeft = ninjaleft + "px";
+                if (ninjaleft < -20) {
+                    alert("out of window");
+                }
+            }
+
+            //khane wala code
+            let y = ninjatop - droptop;
+            let x = ninjaleft - dropleft;
+            y = Math.abs(y);
+            x = Math.abs(x);
+            console.log("ninja top" + ninjatop);
+            console.log("fd top" + droptop);
+            console.log("ninjatop + fdtop" + y);
+
+            if (y < 30) {
+                if (x < 30) {
+                    // alert("kha liye hai ");
+                    droptop = Math.floor((Math.random() * 400) + 10);
+                    dropleft = Math.floor((Math.random() * 400) + 10);
+                    // console.log("drop top" + fdtop);
+                    // console.log("drop left" + fdleft);
+                    drop.style.marginLeft = dropleft + "px";
+                    drop.style.marginTop = droptop + "px";
+                    score_count += 1;
+                    score = document.getElementById("score");
+
+                    score.innerHTML = "score :" + score_count;
+                    scoreShow = document.getElementById("scoreShow");
+                    scoreShow.innerHTML = "Your Score Is :" + score_count;
+
+                }
+            }
+        }
+
+        function showTimer() {
+            var time = "00:01:00";
+            timer_div = document.getElementById("timer_div");
+            applyCSS(timer_div);
+            timer_div.innerHTML = time;
+
+            my_timer = setInterval(function () {
+                var hr = 0;
+                var min = 0;
+                var sec = 0;
+                var time_up = false;
+                t = time.split(":");
+                hr = parseInt(t[0]);
+                min = parseInt(t[1]);
+                sec = parseInt(t[2]);
+                if (sec == 0) {
+                    if (min > 0) {
+                        sec = 59;
+                        min--;
+                    }
+                    else if (hr > 0) {
+                        min = 59;
+                        sec = 59;
+                        hr--;
+                    }
+                    else {
+                        time_up = true;
+                    }
+                }
+                else {
+                    sec--;
+                }
+                if (hr < 10)
+                    hr = "0" + hr;
+
+                if (min < 10)
+                    hr = "0" + min;
+
+                if (sec < 10)
+                    hr = "0" + sec;
+
+                time = hr + " :" + min + " :" + sec;
+
+                if (time_up)
+                    time = "time up";
+                timer_div = document.getElementById("timer_div");
+                timer_div.innerHTML = time;
+                if (time_up)
+                    clearInterval(my_timer);
+            }, 1000);
+        }
+
+        function applyCSS(timer_div) {
+            timer_div.style.fontSize = "22px";
+            timer_div.style.color = "yellow";
+            timer_div.style.fontWeight = "bold";
+            timer_div.style.width = "150px";
+            timer_div.style.padding = "10px"
+            timer_div.style.textAlign = "center";
+            timer_div.style.border = "2px solid white";
+        }
+    </script>
+</body>
+
+</html>

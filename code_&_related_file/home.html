@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <link rel="icon" href="home_png.png" type="image/png">
+
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+
+            }
+
+            body {
+                background-image: linear-gradient(blue, grey, blue);
+                box-sizing: border-box;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+
+            }
+
+            .fixed {
+                box-sizing: border-box;
+                margin-top: 0;
+                padding: 10px;
+                width: 100%;
+                height: 20%;
+                background-color: yellow;
+                color: white;
+                text-shadow: 2px 2px 2px black;
+                background-image: url(hex.jpg);
+                background-size: cover;
+                background-repeat: no-repeat;
+                border: 5px solid red;
+                border-radius: 20px;
+                position: relative;
+                /* height: 50px; */
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+            }
+
+            .fixed a {
+                padding: 5px;
+                margin: 10px;
+                width: 100%;
+                text-align: center;
+                color: white;
+                border: 2px solid rgb(36, 233, 36);
+                border-radius: 10px;
+                text-decoration: none;
+                position: relative;
+                box-sizing: border-box;
+            }
+
+            .fixed a:hover {
+                background-color: rgb(49, 238, 49);
+            }
+
+            .fixed h1 {
+                box-sizing: border-box;
+                letter-spacing: 0.1em;
+                margin-top: 50px;
+                padding-bottom: 10px;
+                width: 350px;
+                position: relative;
+                z-index: 1;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+
+            #game {
+                padding: 10px;
+                box-sizing: border-box;
+                font-size: 30px;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+
+            .game {
+                margin-top: 0px;
+                margin-left: 120px;
+                width: 500px;
+                box-sizing: border-box;
+                position: relative;
+                height: 50%;
+                font-family: Stencil;
+                text-align: center;
+                color: rgb(217, 255, 0);
+                border: 2px solid red;
+            }
+
+            #go {
+                /* moving car */
+                margin-left: 0px;
+                margin-top: 52px;
+                position: absolute;
+                padding: 0;
+            }
+
+            #dev {
+                margin-left: 550px;
+                margin-top: 750;
+                padding-top: 10px;
+                position: absolute;
+                font-size: 20px;
+                text-decoration: underline;
+                font-style: lucida;
+                letter-spacing: 2px;
+                text-align: center;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+
+            #devyani {
+                background-image: url("dev.jpeg");
+                background-size: cover;
+                background-position: 0px -100px;
+            }
+
+            #rohit {
+                background-image: url("Rohit.jpg");
+                background-size: cover;
+                background-position: -1px 0px;
+            }
+
+            #rupali {
+                background-image: url("rupali.jpeg");
+                background-size: cover;
+                background-position: 2px 0px;
+            }
+
+            #kartik {
+                background-image: url(kartik.jpeg);
+                background-size: cover;
+                background-position: 4px -8px;
+            }
+
+            .developers {
+                margin-top: 0px;
+                position: absolute;
+                text-align: center;
+                border: none;
+                padding: 20px;
+            }
+
+            .developers table td {
+                padding: 20px;
+                height: 200px;
+                width: 200px;
+                border: 2px solid red;
+                border-radius: 50%;
+                background-image: url(ninja.png);
+                background-size: contain;
+                background-position: 10px 0px;
+            }
+
+            .contact {
+                position: absolute;
+                margin-top: 1200px;
+                margin-left: 650px;
+                text-align: center;
+                font-size: 15px;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                letter-spacing: 0px;
+            }
+
+            .copyright {
+                margin-top: 1250px;
+                text-align: center;
+                background-color: black;
+                color: white;
+                font-size: 10px;
+                width: auto;
+                /* height: 20px; */
+            }
+
+            #g1 {
+                position: absolute;
+                margin-top: 10px;
+                margin-left: 340px;
+                height: 300px;
+                width: 350px;
+                background: red;
+                animation-name: g1;
+                animation-duration: 50s;
+                animation-delay: 2s;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;
+                animation-fill-mode: forwards;
+                animation-direction: alternate;
+            }
+
+            #g2 {
+                margin-left: 750px;
+                margin-top: 10px;
+                position: absolute;
+                height: 300px;
+                width: 350px;
+                background: blue;
+                animation-name: g2;
+                animation-duration: 50s;
+                animation-delay: 2s;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;
+                animation-fill-mode: forwards;
+                animation-direction: alternate;
+            }
+
+            #g3 {
+                margin-top: 370px;
+                margin-left: 750px;
+                position: absolute;
+                height: 300px;
+                width: 350px;
+                background: green;
+                animation-name: g3;
+                animation-delay: 2s;
+                animation-duration: 50s;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;
+                animation-fill-mode: forwards;
+                animation-direction: alternate;
+            }
+
+            #g4 {
+                margin-top: 370px;
+                margin-left: 350px;
+                position: absolute;
+                height: 300px;
+                width: 340px;
+                background: yellow;
+                animation-name: g4;
+                animation-delay: 2s;
+                animation-duration: 50s;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;
+                animation-fill-mode: forwards;
+                animation-direction: alternate;
+            }
+
+            @keyframes g1 {
+                0% {
+                    margin-top: 10px;
+                    margin-left: 340px;
+                    animation-delay: 5s;
+                }
+
+                25% {
+                    margin-left: 750px;
+                    margin-top: 10px;
+                    animation-delay: 5s;
+                }
+
+                50% {
+                    margin-top: 370px;
+                    margin-left: 750px;
+                    animation-delay: 5s;
+                }
+
+                75% {
+                    margin-top: 370px;
+                    margin-left: 350px;
+                    animation-delay: 5s;
+                }
+
+                100% {
+                    margin-top: 10px;
+                    margin-left: 340px;
+                    animation-delay: 5s;
+                }
+            }
+
+            @keyframes g2 {
+                0% {
+                    margin-left: 750px;
+                    margin-top: 10px;
+                    animation-delay: 5s;
+                }
+
+                25% {
+                    margin-top: 370px;
+                    margin-left: 750px;
+                    animation-delay: 5s;
+                }
+
+                50% {
+                    margin-top: 370px;
+                    margin-left: 350px;
+                    animation-delay: 5s;
+                }
+
+                75% {
+                    margin-top: 10px;
+                    margin-left: 340px;
+                    animation-delay: 5s;
+                }
+
+                100% {
+                    margin-left: 750px;
+                    margin-top: 10px;
+                    animation-delay: 5s;
+                }
+            }
+
+            @keyframes g3 {
+                0% {
+                    margin-top: 370px;
+                    margin-left: 750px;
+                    animation-delay: 5s;
+                }
+
+                25% {
+                    margin-top: 370px;
+                    margin-left: 350px;
+                    animation-delay: 5s;
+                }
+
+                50% {
+                    margin-top: 10px;
+                    margin-left: 340px;
+                    animation-delay: 5s;
+                }
+
+                75% {
+                    margin-left: 750px;
+                    margin-top: 10px;
+                    animation-delay: 5s;
+                }
+
+                100% {
+                    margin-top: 370px;
+                    margin-left: 750px;
+                    animation-delay: 5s;
+                }
+            }
+
+            @keyframes g4 {
+                0% {
+                    margin-top: 370px;
+                    margin-left: 350px;
+                    animation-delay: 5s;
+                }
+
+                25% {
+                    margin-top: 10px;
+                    margin-left: 340px;
+                    animation-delay: 5s;
+                }
+
+                50% {
+                    margin-left: 750px;
+                    margin-top: 10px;
+                    animation-delay: 5s;
+                }
+
+                75% {
+                    margin-top: 370px;
+                    margin-left: 750px;
+                    animation-delay: 5s;
+                }
+
+                100% {
+                    margin-top: 370px;
+                    margin-left: 350px;
+                    animation-delay: 5s;
+                }
+            }
+
+            #box {
+                height: 900px;
+            }
+
+            #link {
+                position: absolute;
+                margin-left: 5px;
+                margin-top: -8px;
+                letter-spacing: 0.12em;
+            }
+
+        </style>
+    </head>
+
+    <body id="display">
+        <div class="fixed">
+            <a href="#"><i class="fas fa-house-user"></i><b>Home</b></a>
+            <a href="about.html"> <i class="far fa-address-card"><b>About</b></i></a>
+            <a href="contact.html"><i class="far fa-id-badge"></i><b>Contact</b></a>
+            <a href="feedback.html"> <i class="far fa-comment-dots"><b>Feedback</b></i></a>
+            <marquee id="go" direction="right" height="80" width="930"> <img src="suv2.png" width="150" height="80">
+            </marquee>
+            <h1>Web Game Center</h1>
+            <p id="link"> <i class="fas fa-external-link-alt"></i>www.webGameCenter.com.in</p>
+        </div>
+        <div id="box">
+            <h5 id="game">we provide number of web games<br>Just Tap, Play & Enjoy !</h5><br><br>
+            <h4 id="game">#Games</h4>
+            <a id="g1" href="1dino.html"> <img src="dino.jpg" alt="" height="300" width="350"> Dino Game</a>
+            <a id="g2" href="2num.html"> <img src="number.png" alt="" height="300" width="350">Num Game</a>
+            <a id="g3" href="3ball.html"> <img src="ball.png" alt="" height="300" width="350">Ball Game</a>
+            <a id="g4" href="4drop.html"> <img src="drop.jpg" alt="" height="300" width="350">Drop Game</a>
+        </div>
+        <div class="developers">
+            <h5 id="dev">about developers work!</h5>
+            <table cellpadding=50 cellspacing=70>
+                <tr>
+                    <td id="devyani"></td>
+                    <th> Devyani Dhole<br>ipsum dolor sit amet consectetur adipisicing
+                        elit. Voluptate soluta deserunt, optio quod ipsum dolor qui modi nisi suscipit quae tempora in
+                        itaque, molestiae facere voluptatibus dolorem architecto recusandae possimus hic vero quisquam
+                        laborum. Iure quae quia soluta laborum veniam reiciendis, rem fuga repudiandae eveniet harum et
+                        deleniti quo assumenda eius expedita perspiciatis quas corporis dolorem deserunt porro possimus!
+                        Eum, illo eius tempore nihil sequi error labore hic odio ipsam accusantium voluptate cupiditate
+                        totam aut odit? Quas, beatae itaque. Qui, eaque laudantium. Nihil quaerat nemo cumque error
+                        magni,
+                        vitae maiores reprehenderit consectetur ipsum, impedit repellat pariatur quibusdam veniam
+                        nostrum
+                        maxime!</th>
+                </tr>
+
+                <tr></tr>
+                <td id="kartik"></td>
+                <th> Kartikeya Thakur<br> Created Falling Ball game & web designing help, meeting room creater,<br>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus ratione minima mollitia modi
+                    debitis incidunt accusantium pariatur cumque voluptatum. Obcaecati distinctio aliquid nostrum ea
+                    nobis! Voluptates, mollitia at? Molestias architecto culpa quod eius ipsam excepturi, alias velit
+                    quis provident quos, error libero eveniet, consectetur minus atque! Aperiam, ducimus sunt! Nobis eum
+                    dolorem, quasi fuga, quae laborum ducimus, explicabo incidunt libero mollitia facere? Natus
+                    voluptatibus laudantium facere exercitationem fugiat? Ut adipisci delectus dignissimos nobis,
+                    repudiandae quidem ab inventore! Doloribus facere minima perferendis. Quasi ullam modi dignissimos
+                    ut tempora reiciendis harum ipsam recusandae facere consequatur quaerat quis, laborum reprehenderit
+                    consequuntur ducimus vel!</th>
+                </tr>
+
+                <tr>
+                    <td id="rohit"></td>
+                    <th> Rohit Thakre<br>created Dinosour , Find_Num and Get The Drop game, web page designed and
+                        created. <br>Lorem ipsum
+                        dolor, sit amet
+                        consectetur adipisicing elit. Laborum cumque quidem similique. Autem fugiat odio cumque
+                        voluptatibus
+                        repudiandae minima iste, natus illo temporibus totam qui nemo sequi ratione alias assumenda sunt
+                        amet porro molestiae. Ad, dolores vel, magnam ex omnis quos nam illum voluptatum doloremque rem
+                        vero
+                        reprehenderit placeat voluptatibus vitae accusamus temporibus possimus odio ut. Illo recusandae
+                        nam
+                        provident excepturi quaerat, magnam ratione. Est fugiat ex quam officia ipsa qui, minima minus
+                        iure
+                        sequi. Veritatis nulla repellat accusamus suscipit perspiciatis obcaecati minima maxime
+                        cupiditate
+                        in perferendis reiciendis esse error alias voluptatibus praesentium, ad officia vitae debitis!
+                        Excepturi, veniam in.</th>
+                </tr>
+                <tr>
+                    <td id="rupali"></td>
+                    <th> Rupali Hedau<br>web development help, file collector, web page layout design<br>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque molestias dolorum quae expedita
+                        quod
+                        incidunt ad enim animi quam alias. Similique consectetur facere, ipsum fugiat ut voluptate
+                        reprehenderit explicabo atque sit esse veniam illum qui quis minima adipisci veritatis suscipit
+                        dignissimos nostrum? Delectus sapiente iusto animi, aliquid velit ipsam in dolores, dolor porro
+                        ad
+                        culpa inventore minus labore et, laborum similique. Consequuntur animi natus vitae earum
+                        voluptatem
+                        enim voluptas veritatis odio. Illo, enim facere reiciendis id porro mollitia fugiat odio atque,
+                        minima rem excepturi, impedit suscipit nam velit expedita? Deleniti id sed cum rem? Doloremque
+                        nesciunt voluptatem repellat ipsa temporibus?</th>
+                </tr>
+            </table>
+        </div>
+        <div class="contact">
+            <p>contact with us at..</p>
+            <p> <i class="fab fa-facebook-square"></i>
+                <i class="fab fa-instagram-square"></i>
+                <i class="fab fa-twitter-square"></i>
+                <i class="fab fa-whatsapp-square"></i>
+                <i class="fas fa-mail-bulk"></i>
+            </p>
+        </div>
+        <div class="copyright">
+            <p>copyright saved at developers main server</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores fugit numquam id iste quae doloribus
+                necessitatibus ullam rem obcaecati dolore aspernatur officiis excepturi dignissimos provident commodi
+                sapiente, quis sed saepe tempore! Vitae nulla sed veritatis aspernatur cupiditate explicabo, minima
+                voluptas
+                excepturi natus recusandae omnis, cum odit! In, delectus. Expedita sunt maxime nostrum? Numquam, nobis
+                consequuntur sapiente accusamus obcaecati laboriosam! Eveniet dolores porro officiis consequuntur
+                impedit
+                sapiente corrupti nulla sint atque! Possimus, ea id? Inventore ducimus animi quo, sequi voluptatibus in
+                eveniet consequuntur numquam odio nam vitae laudantium officiis facilis eos impedit dolore quas, ipsum
+                atque
+                necessitatibus vero sint magnam. Aperiam.</p>
+        </div>
+        <script>
+            document.onkeydown = function (event) {
+                console.log(event.keyCode);
+                if (event.keyCode == 68) {
+                    //dark mode for D button 
+                    dark = document.getElementById("display");
+                    dark.style.background = "rgb(30,20,10,1)";
+                    box = document.getElementById("box");
+                    box.style.backgroundImage = "linear-Gradient( 45deg,rgb(30,20,10,1) 50%, rgb(20,15,0,1) 50%)";
+                    dark.style.color = "white";
+                }
+                if (event.keyCode == 76) {
+                    //dark mode for L button 
+                    dark = document.getElementById("display");
+                    dark.style.color = "black";
+                    // dark.style.background = "white";
+                    dark.style.backgroundImage = "linear-Gradient( 50deg, yellow 50%, rgb(49, 238, 49) 50%)";
+                }
+            }
+        </script>
+    </body>
+
+</html>
